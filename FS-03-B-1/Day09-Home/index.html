@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+                width: 300px;
+                height: 40px;
+                border-color: green;
+                font-size: 22px;
+                align-items: center;
+                border-radius: 5px;
+            }
+            #input:focus {
+                outline: none;
+                border-color: green;
+                box-shadow: 0 0 5px green;
+            }
+            p{
+                font-size: 2rem;
+                
+            }
+            button{
+                background-color: rgb(151, 245, 156);
+                border:green ;
+                border-radius: 5px;
+                height: 44px;
+                width: 100px;
+                font-size: large;
+            }
+    </style>
+</head>
+<body>
+    <input type="text" id="contentInput" placeholder="Enter text">
+    <button id="addButton">Add</button>
+    <div id="output">
+        
+    </div>
+    <script>
+        const contentInput=document.getElementById("contentInput");
+        const addButton=document.getElementById("addButton");
+        const output=document.getElementById("output");
+        addButton.addEventListener("click",()=>{
+            const Text=contentInput.value;
+            if(Text.trim()!==" "){
+                const para=document.createElement("p");
+                para.textContent=Text;
+                output.appendChild(para)
+                contentInput.value=" "
+            }
+        })
+    </script>
+
+</body>
+</html>
