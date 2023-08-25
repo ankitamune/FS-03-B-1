@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day09</title>
+    <style>
+        .manipulated-div {
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropdowns {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 20px;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="targetDiv" class="manipulated-div">Sample Text</div>
+    <div class="dropdowns">
+        <label for="colorDropdown">Color:</label>
+        <select id="colorDropdown">
+            <option value="">Select a color</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+        </select>
+
+        <label for="bgColorDropdown">Background Color:</label>
+        <select id="bgColorDropdown">
+            <option value="">Select a background color</option>
+            <option value="yellow">Yellow</option>
+            <option value="pink">Pink</option>
+            <option value="pink">green</option>
+            <option value="purple">Purple</option>
+            <option value="orange">Orange</option>
+            <option value=""></option>
+        </select>
+
+        <label for="paddingDropdown">Padding:</label>
+        <select id="paddingDropdown">
+            <option value="">Select padding</option>
+            <option value="5px">5px</option>
+            <option value="10px">10px</option>
+            <option value="15px">15px</option>
+        </select>
+
+        <label for="fontSizeDropdown">Font Size:</label>
+        <select id="fontSizeDropdown">
+            <option value="">Select font size</option>
+            <option value="12px">12px</option>
+            <option value="16px">16px</option>
+            <option value="20px">20px</option>
+            <option value="24">24px</option>
+            <option value="24">28px</option>
+            <option value="24">32px</option>
+        </select>
+
+        <label for="fontWeightDropdown">Font Weight:</label>
+        <select id="fontWeightDropdown">
+            <option value="">Select font weight</option>
+            <option value="small">Small</option>
+            <option value="normal">Normal</option>
+            <option value="bold">Bold</option>
+            <option value="bolder">Bolder</option>
+        </select>
+    </div>
+    <script >
+        const colorDropdown = document.getElementById("colorDropdown");
+        const bgColorDropdown = document.getElementById("bgColorDropdown");
+        const paddingDropdown = document.getElementById("paddingDropdown");
+        const fontSizeDropdown = document.getElementById("fontSizeDropdown");
+        const fontWeightDropdown = document.getElementById("fontWeightDropdown");
+        const targetDiv = document.getElementById("targetDiv");
+
+        colorDropdown.addEventListener("change", () => {
+            targetDiv.style.color = colorDropdown.value;
+        });
+
+        bgColorDropdown.addEventListener("change", () => {
+            targetDiv.style.backgroundColor = bgColorDropdown.value;
+        });
+
+        paddingDropdown.addEventListener("change", () => {
+            targetDiv.style.padding = paddingDropdown.value;
+        });
+
+        fontSizeDropdown.addEventListener("change", () => {
+            targetDiv.style.fontSize = fontSizeDropdown.value;
+        });
+
+        fontWeightDropdown.addEventListener("change", () => {
+            targetDiv.style.fontWeight = fontWeightDropdown.value;
+        });
+
+    </script>
+</body>
+</html>
