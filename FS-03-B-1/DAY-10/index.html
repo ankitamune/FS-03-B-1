@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>change Background Color</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.5s;
+  }
+
+  #colorChangeButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: darkblue;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+  }
+  button:hover {
+    background-color: #34495e; 
+    transform: scale(1.1); 
+}
+
+</style>
+</head>
+<body>
+<button id="colorChangeButton">Change Background</button>
+<script>
+  const colorChangeButton = document.getElementById('colorChangeButton');
+
+  colorChangeButton.addEventListener('click', changeBackgroundColor);
+
+  function changeBackgroundColor() {
+    const randomColor = getRandomColor();
+    document.body.style.backgroundColor = randomColor;
+  }
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+</body>
+</html>
