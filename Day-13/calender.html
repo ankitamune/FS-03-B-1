@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            background-color: slateblue;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .calender-container {
+            background-color: white;
+            width: 300px;
+            height: 30s0px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        #month-name{
+            margin: 0;
+            background-color: orangered;
+            color: white;
+            padding: 10px;
+            font-size: 30px;
+            font-weight: bold
+        }
+        #day-name{
+            color: darkgray;
+            font-size: 20px;
+        }
+        #date-num {
+            font-size: 80px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        #year {
+            margin: 20px 0;
+            font-size: 20px;
+            color: darkgray;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calender-container">
+        <p id="month-name"></p>
+        <p id="day-name"></p>
+        <p id="date-num"></p>
+        <p id="year"></p>
+    </div>
+    <script>
+        const monthName=document.getElementById("month-name");
+        const DayName=document.getElementById("day-name");
+        const Number=document.getElementById("date-num");
+        const Year=document.getElementById("year")
+
+        const date=new Date();
+        const month=date.getMonth()
+
+        monthName.innerText=date.toLocaleString("en",{
+            month:"long"
+        })
+        DayName.innerText=date.toLocaleString("en",{
+            weekday:"long"
+        })
+        Number.innerText=date.getDate();
+        Year.innerText=date.getFullYear()
+    </script>
+</body>
+</html>
