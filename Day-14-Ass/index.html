@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player Leaderboard</title>
+    <style>
+      body{
+        /* background-color: rgb(167, 218, 241); */
+        margin: 0;
+        padding: 0;
+      }
+  
+  .heading{
+    margin: 30px 0px;
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .container{
+    width: 60%;
+    margin: 0px auto;
+   
+  }
+
+  .form{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .form input{
+    margin: 5px;
+    height: 30px;
+    width: 170px;
+    font-size: 18px;
+    padding-left: 5px;
+    border: 1px solid lightgreen;
+   
+  }
+
+  .form input:focus{
+    outline: none;
+    border: 3px solid lightgreen;
+  }
+
+  /* .form button{
+    background-color:rgb(8, 6, 6) ;
+    color: whitesmoke;
+    padding: 0px 20px;
+    border: none;
+    cursor: pointer; 
+  } */
+  button:not(#add){
+    all: unset;
+    border-radius: 50%;
+    background: lightgreen;
+    width: 80px;
+    height: 60px;
+    transition: all .5s ease;
+}
+
+  .form button:hover{
+    background-color:lightgreen ;
+  }
+  button{
+    all: unset;
+    width: 150px;
+    background: lightgreen;
+    padding: 0;
+    transition: all .5s ease;
+}
+button:active{
+    transform: scale(.95) translateY(5px);
+    filter: brightness(.9);
+}
+
+  .warning{
+    margin-top: 20px;
+    color: red;
+    text-align: center;
+  }
+
+  .result{
+    display: flex;
+    margin-top: 10px;
+    background-color:lightgreen;
+    padding: 5px 60px 5px 5px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .first{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* width: 20%; */
+  }
+
+  .first .p{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .f
+
+  .score-date{
+    font-size: 10px;
+    margin-top: 5px;
+    color: rgb(245, 245, 246);
+  }
+
+  .cname{
+    text-transform: uppercase;
+    width: 40%;
+    letter-spacing: 2px;
+  }
+
+  .delete{
+    display: flex;
+
+  }
+  .scores{
+    width: 5%;
+  }
+
+  .del{
+    margin-left: 20px;
+    /* background-color: whitesmoke; */
+    /* padding: 12px;
+    border-radius: 50%; */
+    cursor: pointer;
+    width: 35%;
+  }
+
+  /* .del:hover{
+    background-color: rgb(168, 192, 133);
+  } */
+  .show{
+    display: grid;
+    justify-items: center;
+    gap: .3em;
+    width: 90%;
+    background: lightgreen;
+    text-transform: uppercase;
+    padding: 1em 0;
+}
+  .icon{
+    color: rgb(0,0,0);
+  }
+  .main_time-stamp{
+    margin-top: -20px;
+    color: #686868;
+    /* font-size: .8em; */
+}
+    </style>
+  </head>
+  <body>
+    <p class="heading">LEADERBOARD</p>
+    <div class="container">
+      <div class="form">
+        <input type="text" id="fname" class="fname" placeholder="First Name" />
+        <input type="text" id="lname" class="lname" placeholder="Last Name" />
+        <input type="text" id="country" class="country" placeholder="Country" />
+        <input
+          type="number"
+          id="score"
+          class="score"
+          placeholder="Player Score"
+        />
+        <button id="add">Add Player</button>
+      </div>
+      <p class="warning" id="warn"></p>
+
+      <div id="show"></div>
+    </div>
+
+    <script>
+      let firstName = document.getElementById("fname");
+let lastName = document.getElementById("lname");
+let country = document.getElementById("country");
+let score = document.getElementById("score");
+let addBtn = document.getElementById("add");
+
+addBtn.addEventListener("click", getData);
+
+function getData() {
+  if (
+    firstName.value == "" ||
+    lastName.value == "" ||
+    country.value == "" ||
+    score.value == ""
+  ) {
+    document.getElementById("warn").innerText = "All fields are mandatory to fill  .";
+  } else {
+    document.getElementById("warn").innerText = "";
+    addData();
+  }
+}
+
+function addData() {
+  
+
+  document.getElementById("show").innerHTML += `<div class="result">
+    <div class="first">
+      <p class="p">${firstName.value} ${lastName.value}</p>
+      <p class="main_time-stamp">${generateDateAndTime()}</p>
+    </div>
+    
+
+    <div class="cname">
+      <p>${country.value}</p>
+    </div>
+    <div class="scores">
+      <p>${score.value}</p>
+    </div>
+    <div class="delete">
+      <button onclick="deleteData(this)">&#x1f5d1;</button>
+      <div class="del" onclick="plusData(this)">
+        <p>+5</p>
+      </div>
+      <div class="del" onclick="minusData(this)">
+        <p>-5</p>
+      </div>
+    </div>
+  </div>`;
+
+  firstName.value = "";
+  lastName.value = "";
+  country.value = "";
+  score.value = "";
+}
+
+function deleteData(e) {
+  e.parentElement.parentElement.remove();
+}
+
+function plusData(e) {
+ 
+  e.parentElement.previousElementSibling.children[0].innerText =
+    parseInt(e.parentElement.previousElementSibling.children[0].innerText) + 5;
+}
+function minusData(e) {
+  e.parentElement.previousElementSibling.children[0].innerText =
+    e.parentElement.previousElementSibling.children[0].innerText - 5;
+}
+function generateDateAndTime(){
+    let dateObject = new Date();
+    // console.log(dateObject);
+    let month = dateObject.toLocaleString("default", {month:"long"})
+    // console.log(month);
+    day = dateObject.getDate(),
+    year = dateObject.getFullYear(),
+    time = dateObject.toLocaleTimeString().slice(0,8);
+    // console.log(time);
+
+    let generateResult = `${month} ${day}: ${year} ${time}`
+
+    return generateResult;
+}
+    </script>
+  </body>
+</html>
