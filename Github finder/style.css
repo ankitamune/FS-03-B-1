@@ -1,0 +1,172 @@
+:root{
+    font-size: 14px;
+    font-family: 'Roboto Mono', 'monospace';
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-weight: inherit;
+    font-size: inherit;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+}
+
+body{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+header{
+    margin-bottom: 20px;
+}
+
+header .logo{
+    font-size: 2rem;
+    font-weight:bold
+}
+
+/* #myForm{
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background-color: #ededed;
+    margin-bottom: 20px;
+}
+
+#myForm .fa-search{
+    font-size:1.3rem;
+}
+
+#myForm #search{
+    width: 100%;
+    padding: 8px;
+    background-color: transparent;
+}
+
+#myForm .btn{
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: .4s all ease;
+}
+
+#myForm .btn:hover{
+    transform: scale(0.95);
+} */
+#myForm{
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background-color: #ededed;
+    margin-bottom: 20px;
+}
+input{
+    width: 100%;
+    padding: 8px;
+    background-color: transparent;
+}
+form .btn{
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: .4s all ease;
+}
+.btn:hover{
+    transform: scale(0.95);
+}
+#result{
+    background-color: #ededed;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.container{
+    width: 80%;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.d-flex.between{
+    justify-content: space-between;
+}
+
+.d-flex.center{
+    align-items: center;
+}
+
+img{
+    width: 100%;
+    object-fit: cover;
+}
+
+header .dark-toggle{
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+#result .head{
+    margin-bottom: 20px;
+}
+
+#result .had .sub{
+    flex-direction: column;
+    -webkit-box-direction: normal;
+}
+
+#result .head .photo{
+    width: 80px;
+    border-radius: 50%;
+    height: 80px;
+    margin-right: 20px;
+}
+
+#result .head .name{
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+#result .head .joined{
+    margin-top: 8px;
+    font-size: .9rem;
+}
+
+#result .details .card{
+    margin-top: 18px;
+    padding: 22px;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: .9rem;
+}
+
+#result .details .links{
+    flex-direction: row;
+    -webkit-box-direction: normal;
+}
+
+#result .details .links li{
+    margin-bottom: 12px;
+}
+
+.mb-5{
+    margin-bottom: 5px;
+}
+
+.fw-bold{
+    font-weight: bold;
+}
+
+.w-100{
+    width: 100%;
+}
