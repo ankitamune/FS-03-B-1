@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .chart-container {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <canvas id="real-time-chart"></canvas>
+      </div>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+      
+   <script>
+   
+        var ctx = document.getElementById('real-time-chart').getContext('2d');
+
+
+        var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+            label: 'Real-time Data',
+            data: [],
+            backgroundColor: 'rgba(0, 123, 255, 0.5)',
+            borderColor: 'rgba(0, 123, 255, 1)',
+            borderWidth: 1
+            }]
+        },
+        options: {
+            animation: {
+            duration: 0 
+            },
+            scales: {
+            x: {
+                display: false 
+            }
+            }
+        }
+        });
+
+        
+        function updateChart(data) {
+        
+        chart.data.labels.push('');
+        chart.data.datasets[0].data.push(data);
+        if (chart.data.labels.length > 10) {
+            chart.data.labels.shift();
+            chart.data.datasets[0].data.shift();
+        }
+        chart.update({
+            duration: 200, 
+            easing: 'linear' 
+        });
+        }
+
+       
+        setInterval(function() {
+            var newData = Math.random() * 100; 
+            updateChart(newData);
+        }, 1000); 
+   </script> 
+</body>
+</html>
