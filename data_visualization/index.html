@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Bar Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        canvas {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="barChart"></canvas>
+
+    <script>
+        const ctx = document.getElementById('barChart').getContext('2d');
+
+        // Sample data
+        const data = {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Data',
+                data: [65, 59, 80, 81, 56],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                ],
+                borderWidth: 1,
+            }],
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                animation: {
+                    onComplete: function (animation) {
+                        anime({
+                            targets: '.bar',
+                            translateY: [0, -15],
+                            duration: 1000,
+                            delay: anime.stagger(100),
+                            easing: 'easeOutQuint',
+                        });
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                },
+            },
+        };
+
+        const myChart = new Chart(ctx, config);
+
+       
+        const bars = document.querySelectorAll('.bar');
+        bars.forEach((bar, index) => {
+            bar.addEventListener('mouseenter', () => {
+                bar.style.backgroundColor = 'rgba(255, 99, 132, 1)';
+            });
+            bar.addEventListener('mouseleave', () => {
+                bar.style.backgroundColor = 'rgba(255, 99, 132, 0.5)';
+            });
+            bar.addEventListener('click', () => {
+                alert(`Clicked on Category ${index + 1}`);
+            });
+        });
+    </script>
+</body>
+</html>
